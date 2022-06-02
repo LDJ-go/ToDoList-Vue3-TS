@@ -22,5 +22,11 @@ export default defineStore('main', {
 			await request.delete(`/${id}`);
 			this.getTodos();
 		},
+		async updateTodo(id: number, key: string, value: boolean | string) {
+			await request.patch('/' + id, {
+				[key]: value,
+			});
+			this.getTodos();
+		},
 	},
 });
