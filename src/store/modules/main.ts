@@ -1,20 +1,26 @@
-import { defineStore } from 'pinia'
+import { defineStore } from 'pinia';
+import { ListItem } from '../../types/data';
+import request from '../../utils/request';
 
 export default defineStore('main', {
 	state: () => {
 		return {
-			list: [
-				{
-					id: 0,
-					name: '吃饭',
-					done: true,
-				},
-				{
-					id: 1,
-					name: '睡觉',
-					done: false,
-				},
-			],
-		}
+			list: [] as ListItem[],
+		};
 	},
-})
+	actions: {
+		async getTodos() {
+			// 不懂啥意思
+			const { data } = await request.get<ListItem[]>('/');
+			this.list = data;
+		},
+		/**
+		 * 删除数据
+		 * @param id number
+		 */
+		async deleteTodo(id: number) {
+			await request.delete(`/${id}`);
+			this.getTodos();
+		},
+	},
+});

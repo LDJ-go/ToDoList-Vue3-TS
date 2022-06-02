@@ -1,9 +1,11 @@
 <script setup lang="ts">
-	import useStore from '../store'
+	import { storeToRefs } from 'pinia';
+	import useStore from '../store';
 
-	const { main } = useStore()
-
-	console.log(main)
+	const { main } = useStore();
+	const { getTodos, deleteTodo } = main;
+	getTodos();
+	const { list } = storeToRefs(main);
 </script>
 
 <template>
@@ -14,19 +16,11 @@
 		<ul class="todo-list">
 			<!-- These are here just to show the structure of the list items -->
 			<!-- List items should get the class `editing` when editing and `completed` when marked as completed -->
-			<li class="completed">
+			<li :class="{ completed: item.done }" v-for="item in list" :key="item.id">
 				<div class="view">
-					<input class="toggle" type="checkbox" checked />
-					<label>Taste JavaScript</label>
-					<button class="destroy"></button>
-				</div>
-				<input class="edit" value="Create a TodoMVC template" />
-			</li>
-			<li>
-				<div class="view">
-					<input class="toggle" type="checkbox" />
-					<label>Buy a unicorn</label>
-					<button class="destroy"></button>
+					<input class="toggle" type="checkbox" :checked="item.done" />
+					<label>{{ item.name }}</label>
+					<button class="destroy" @click="deleteTodo(item.id)"></button>
 				</div>
 				<input class="edit" value="Rule the web" />
 			</li>
