@@ -4,7 +4,7 @@ module.exports = {
 	tabWidth: 4, //缩进长度
 	useTabs: true, //是否使用tab缩进代替空格
 	semi: false, //句末使用分号
-	singleQuote: false, //使用单引号
+	singleQuote: true, //使用单引号
 	quoteProps: "as-needed", //仅在必需时为对象的key添加引号
 	jsxSingleQuote: true, // jsx中使用单引号
 	trailingComma: "es5", //多行时尽可能打印尾随逗号
@@ -17,4 +17,4 @@ module.exports = {
 	vueIndentScriptAndStyle: true, //是否对vue中的script及style标签缩进
 	endOfLine: "lf", //结束行形式
 	embeddedLanguageFormatting: "auto", //对引用代码进行格式化
-};
+}
