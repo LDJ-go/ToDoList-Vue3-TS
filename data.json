@@ -1,24 +1,9 @@
 {
   "todos": [
     {
-      "id": 0,
-      "name": "吃饭",
-      "done": false
-    },
-    {
-      "id": 1,
-      "name": "睡觉",
-      "done": false
-    },
-    {
-      "id": 2,
-      "name": "写代码",
-      "done": false
-    },
-    {
       "name": "asd",
       "done": false,
-      "id": 3
+      "id": 2
     }
   ]
 }

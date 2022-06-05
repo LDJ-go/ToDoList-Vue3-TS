@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia';
+import footerStore from './footer';
 import { ListItem } from '../../types/data';
 import request from '../../utils/request';
 
@@ -73,6 +74,17 @@ export default defineStore('main', {
 		// 未完成的数据
 		unCompleted(state) {
 			return state.list.filter((item) => !item.done);
+		},
+		// 根据active筛选出的数据
+		renderList(state) {
+			const active = footerStore().active;
+			if (active === 'Active') {
+				return state.list.filter((item) => !item.done);
+			}
+			if (active === 'Completed') {
+				return state.list.filter((item) => item.done);
+			}
+			return state.list;
 		},
 	},
 });

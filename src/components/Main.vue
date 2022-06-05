@@ -11,7 +11,7 @@
 
 	getTodos();
 
-	const { list, mainRadioStatus } = storeToRefs(main);
+	const { renderList, mainRadioStatus } = storeToRefs(main);
 
 	const handleChangeAll = function (done: boolean) {
 		updateAllStatus(done);
@@ -33,7 +33,7 @@
 			<!-- These are here just to show the structure of the list items -->
 			<!-- List items should get the class `editing` when editing and `completed` when marked as completed -->
 			<TodoItem
-				v-for="item in list"
+				v-for="item in renderList"
 				:key="item.id"
 				:item="item"
 			/>
